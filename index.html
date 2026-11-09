@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mural de recados da Igreja Evangélica Livre do Boa Vista, Curitiba.">
+<title>Mural IELBV</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:wght@400;700&family=Nunito+Sans:wght@400;600;700;900&display=swap">
+<style>
+/* Layout: segue a série "Quatro marcas" — título condensado, etiquetas de máquina de escrever em fita, skyline em retícula com a estufa do Jardim Botânico e araucárias; verde predomina, laranja só na fita e em detalhes */
+:root{
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --musgo:#3E4A22; --oliva:#6B7A3A; --laranja:#D6621E; --creme:#E8E1CB; --papel:#F1ECDE;
+  --kraft:#C4AC80; --salvia:#96A068; --ferrugem:#A8461C; --pessego:#E8A060; --tinta:#1A1A14; --branco:#F8F6EE;
+  --musgo-escuro:#2F3819;
+  --display:"Anton", "Impact", "Arial Narrow", sans-serif;
+  --maquina:"Courier Prime", "Courier New", monospace;
+  --body:"Nunito Sans", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+html{font-size:clamp(16px,0.55vw + 13px,21px)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--creme);color:var(--tinta);font-family:var(--body);font-size:1rem;line-height:1.5}
+.wrap{max-width:62rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header{background:var(--musgo);color:var(--papel)}
+.topo-h{padding-block:1.375rem 0.375rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.etq{font:700 0.8125rem var(--maquina);background:var(--papel);color:var(--musgo);padding:3px 0.5625rem;transform:rotate(-2deg);box-shadow:1px 2px 0 rgba(0,0,0,.25)}
+.logo{width:6rem;color:var(--papel);flex:none}
+.titulo{padding-block:0.625rem 1.125rem}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(3.5rem,14vw,5.5rem);line-height:.92;margin:0;letter-spacing:.01em;text-transform:uppercase}
+h1 span{color:var(--salvia)}
+.fita{display:inline-block;margin-top:0.75rem;font:700 clamp(0.875rem,3.6vw,1.125rem) var(--maquina);background:var(--laranja);color:var(--papel);padding:0.3125rem 0.75rem;transform:rotate(-1.5deg);box-shadow:1px 2px 0 rgba(0,0,0,.3)}
+.skyline{display:block;width:100%;height:clamp(5.25rem,8.75vw,13.75rem)}
+.paver{height:1.375rem;background-color:var(--musgo-escuro);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='22'%3E%3Cpath d='M11 3 Q17 11 11 19 Q5 11 11 3Z' fill='%23F1ECDE'/%3E%3Cpath d='M33 3 Q39 11 33 19 Q27 11 33 3Z' fill='%236B7A3A'/%3E%3C/svg%3E")}
+
+.intro{padding-block:1.125rem 0;display:flex;flex-direction:column;gap:0.625rem}
+.intro p{margin:0;font-size:1.062rem;color:var(--musgo);font-weight:600;max-width:46ch}
+.note{align-self:flex-start;font:700 0.8125rem var(--maquina);color:var(--ferrugem);border:1px dashed var(--kraft);background:var(--papel);padding:0.375rem 0.625rem}
+.tools{display:flex;flex-direction:column;gap:0.875rem;margin:1.25rem 0}
+#busca{width:100%;font:inherit;padding:0.75rem 0.875rem;border:2px solid var(--salvia);border-radius:0.375rem;background:var(--branco);color:var(--tinta)}
+#busca:focus{outline:3px solid var(--oliva);outline-offset:1px;border-color:var(--musgo)}
+.chips{display:flex;flex-wrap:wrap;gap:0.5rem}
+.chip{font:700 0.875rem var(--maquina);padding:0.375rem 0.75rem;border:0;background:var(--papel);color:var(--musgo);cursor:pointer;box-shadow:1px 2px 0 var(--kraft)}
+.chip[aria-pressed="true"]{background:var(--musgo);color:var(--papel);box-shadow:1px 2px 0 var(--tinta)}
+.chip:focus-visible{outline:3px solid var(--laranja)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,18rem),1fr));gap:1rem;margin-bottom:1.75rem}
+.card{position:relative;text-align:left;border:0;cursor:pointer;border-radius:4px;padding:2.75rem 1rem 1.125rem;min-height:10rem;display:flex;flex-direction:column;justify-content:flex-end;gap:0.375rem;font-family:var(--body);transition:transform .15s;box-shadow:0 0 0 3px var(--branco),2px 4px 0 3px rgba(26,26,20,.12)}
+.card:hover{transform:translateY(-3px) rotate(-.4deg)}
+.card:focus-visible{outline:3px solid var(--tinta);outline-offset:4px}
+.card .cat{position:absolute;top:0.75rem;left:0.75rem;font:700 0.75rem var(--maquina);padding:2px 0.5rem;background:var(--papel);color:var(--musgo);transform:rotate(-2deg)}
+.card .ex{position:absolute;top:0.875rem;right:0.75rem;font:700 0.625rem var(--maquina);opacity:.75}
+.card b{font-family:var(--display);font-weight:400;font-size:1.625rem;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.card small{font-size:0.875rem;opacity:.92}
+.card .promo{align-self:flex-start;margin-top:4px;font:700 0.75rem var(--maquina);background:var(--laranja);color:var(--papel);padding:2px 0.4375rem}
+.c-musgo{background:var(--musgo);color:var(--papel)}
+.c-oliva{background:var(--oliva);color:var(--papel)}
+.c-salvia{background:var(--salvia);color:var(--tinta)}
+.c-kraft{background:var(--kraft);color:var(--tinta)}
+.c-papel{background:var(--papel);color:var(--musgo)}
+.c-papel .cat{background:var(--musgo);color:var(--papel)}
+.c-escuro{background:var(--musgo-escuro);color:var(--papel)}
+@media(max-width:600px){
+  .chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:0.375rem;margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));scrollbar-width:none}
+  .chip{flex:none}
+  .card{min-height:0;padding-top:2.875rem}
+  .grid{gap:0.75rem}
+}
+.vazio{grid-column:1/-1;padding:1.5rem;text-align:center;color:var(--oliva);font-family:var(--maquina)}
+
+.cta{background:var(--musgo);color:var(--papel);padding:1.375rem 1.25rem;display:flex;flex-wrap:wrap;gap:0.875rem 1.25rem;align-items:center;justify-content:space-between;margin-bottom:1.75rem}
+.cta h2{font-family:var(--display);font-weight:400;font-size:1.875rem;line-height:1;margin:0;text-transform:uppercase}
+.cta p{margin:0.375rem 0 0;font:400 0.9375rem var(--maquina);color:var(--kraft)}
+.btn{display:inline-block;background:var(--papel);color:var(--musgo);font:700 0.9375rem var(--maquina);text-decoration:none;padding:0.625rem 1rem;box-shadow:2px 3px 0 var(--laranja)}
+.btn:focus-visible{outline:3px solid var(--salvia);outline-offset:2px}
+footer{padding-block:0 2rem;display:flex;flex-wrap:wrap;gap:0.75rem 1.25rem;align-items:center;justify-content:space-between}
+footer p{margin:0;font:400 0.875rem/1.55 var(--maquina);color:var(--oliva);max-width:52ch}
+footer .logo{color:var(--musgo);width:5.25rem}
+.aviso-legal{flex:1 1 100%;display:flex;flex-direction:column;gap:0.375rem;border-top:1px dashed var(--kraft);padding-top:0.875rem}
+.aviso-legal p{max-width:70ch}
+.aviso-legal b{color:var(--musgo)}
+.contato-guia{user-select:all;font-weight:700;color:var(--musgo)}
+
+
+.veu{position:fixed;inset:0;background:rgba(26,26,20,.55);display:grid;place-items:end center;z-index:20;padding:1rem max(16px,env(safe-area-inset-left,0px)) calc(1rem + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-right,0px))}
+@media(min-width:640px){.veu{place-items:center}}
+.ficha{width:100%;max-width:32.5rem;max-height:90%;overflow:auto;background:var(--branco);border-radius:0.375rem}
+.ficha .topo{padding:1.375rem 1.25rem 1.125rem}
+.ficha .topo .cat{font:700 0.8125rem var(--maquina);opacity:.85}
+.ficha h3{font-family:var(--display);font-weight:400;font-size:2.375rem;line-height:1;margin:0.375rem 0 0;text-transform:uppercase}
+.ficha .corpo{padding:1.125rem 1.25rem 1.375rem;display:flex;flex-direction:column;gap:0.875rem}
+.ficha .corpo p{margin:0}
+.oferta{background:var(--papel);border-left:4px solid var(--laranja);padding:0.625rem 0.75rem;font-weight:600}
+.contato{display:grid;grid-template-columns:auto 1fr;gap:0.375rem 0.75rem;font-size:0.9375rem}
+.contato dt{font:700 0.875rem var(--maquina);color:var(--oliva)}
+.contato dd{margin:0;user-select:all}
+.fechar{align-self:flex-start;font:700 0.9375rem var(--maquina);background:var(--musgo);color:var(--papel);border:0;padding:0.625rem 1.125rem;cursor:pointer}
+.fechar:focus-visible{outline:3px solid var(--laranja);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
+
+.contato a{color:var(--musgo);font-weight:700}
+body{margin:0}
+img{max-width:100%}
+
+@media(min-width:768px){
+  .intro p{max-width:none}
+  footer{display:grid;grid-template-columns:1fr auto;column-gap:3rem;row-gap:1.25rem;align-items:center}
+  .aviso-legal{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+  .aviso-legal p,footer > p{max-width:none}
+  footer .logo{justify-self:end}
+}
+/* ---- mural ---- */
+.grupo{margin-bottom:2rem}
+.grupo h2{font-family:var(--display);font-weight:400;font-size:1.75rem;line-height:1;margin:0 0 0.875rem;color:var(--musgo);text-transform:uppercase;display:flex;align-items:baseline;gap:0.625rem}
+.grupo h2 small{font:700 0.8125rem var(--maquina);color:var(--oliva);text-transform:none}
+.recados{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,19rem),1fr));gap:1.25rem 1rem}
+.rec{position:relative;background:var(--papel);color:var(--tinta);padding:1.375rem 1.125rem 1rem;display:flex;flex-direction:column;gap:0.625rem;box-shadow:0 0 0 3px var(--branco),2px 5px 0 3px rgba(26,26,20,.12);transform:rotate(-.5deg)}
+.rec:nth-child(2n){transform:rotate(.45deg)}
+.rec::before{content:"";position:absolute;top:-0.5rem;left:50%;width:1.125rem;height:1.125rem;margin-left:-0.5625rem;border-radius:50%;background:var(--oliva);box-shadow:0 0 0 3px var(--branco),1px 3px 0 3px rgba(26,26,20,.18)}
+.rec.urg::before{background:var(--laranja)}
+.rec.urg{box-shadow:0 0 0 3px var(--branco),0 0 0 6px var(--laranja),2px 6px 0 6px rgba(26,26,20,.12)}
+.rec-top{display:flex;gap:0.875rem;align-items:flex-start}
+.cal{flex:none;width:3.75rem;text-align:center;background:var(--branco);box-shadow:1px 2px 0 var(--kraft)}
+.cal .m{display:block;background:var(--musgo);color:var(--papel);font:700 0.6875rem var(--maquina);padding:2px 0;text-transform:lowercase}
+.cal .d{display:block;font-family:var(--display);font-size:1.875rem;line-height:1.15;color:var(--musgo)}
+.cal .s{display:block;font:700 0.625rem var(--maquina);color:var(--oliva);padding-bottom:3px}
+.cal.hoje .m{background:var(--laranja)}
+.rec-cab{display:flex;flex-direction:column;gap:0.3125rem;min-width:0}
+.tags{display:flex;flex-wrap:wrap;gap:0.375rem}
+.tag{font:700 0.6875rem var(--maquina);padding:1px 0.4375rem;background:var(--musgo);color:var(--papel)}
+.tag.imp{background:var(--laranja)}
+.tag.ex{background:transparent;color:var(--ferrugem);border:1px dashed var(--ferrugem)}
+.rec h3{font-family:var(--display);font-weight:400;font-size:1.5rem;line-height:1.02;margin:0;text-transform:uppercase;color:var(--musgo);overflow-wrap:anywhere}
+.rec p{margin:0;font-size:0.9375rem;white-space:pre-line;overflow-wrap:anywhere}
+.meta{display:flex;flex-direction:column;gap:2px;font:700 0.8125rem var(--maquina);color:var(--oliva)}
+.acoes{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:auto;padding-top:0.25rem}
+.acoes a{font:700 0.8125rem var(--maquina);text-decoration:none;padding:0.375rem 0.625rem;background:var(--branco);color:var(--musgo);box-shadow:1px 2px 0 var(--kraft)}
+.acoes a.zap{background:var(--musgo);color:var(--papel);box-shadow:1px 2px 0 var(--tinta)}
+.acoes a:focus-visible{outline:3px solid var(--laranja);outline-offset:2px}
+.recados{align-items:start}
+.foto{display:block;width:calc(100% + 0.75rem);margin:-0.625rem -0.375rem 0.125rem;padding:0.375rem;border:0;background:var(--branco);cursor:zoom-in;box-shadow:1px 3px 0 rgba(26,26,20,.15)}
+.foto img{display:block;width:100%;height:auto;max-width:100%}
+.foto:focus-visible{outline:3px solid var(--laranja);outline-offset:2px}
+.rec.com-foto::before{top:-0.75rem;z-index:1}
+.lb{position:fixed;inset:0;z-index:30;background:rgba(26,26,20,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:1rem max(16px,env(safe-area-inset-left,0px)) calc(1rem + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-right,0px))}
+.lb img{max-width:100%;max-height:80vh;width:auto;height:auto;box-shadow:0 0 0 6px var(--branco)}
+.lb .fechar{font:700 0.9375rem var(--maquina);background:var(--papel);color:var(--musgo);border:0;padding:0.625rem 1.125rem;cursor:pointer}
+.vazio{padding:1.5rem;text-align:center;color:var(--oliva);font-family:var(--maquina)}
+@media(prefers-reduced-motion:reduce){.rec,.rec:nth-child(2n){transform:none}}
+</style>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="ret" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r="1.3" fill="#F1ECDE"/></pattern>
+    <pattern id="ret2" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r="0.9" fill="#C4AC80"/></pattern>
+  </defs>
+  <symbol id="arau" viewBox="0 0 100 160">
+    <path d="M47.6 160 V46 L22 31 L24.4 27.6 L50 42.4 L75.6 27.6 L78 31 L52.4 46 V160Z"/>
+    <path d="M2 30 Q6 15 28 17 Q50 7 72 17 Q94 15 98 30 Q74 37 50 34 Q26 37 2 30Z"/>
+  </symbol>
+  <symbol id="logo" viewBox="0 0 160 100">
+    <text x="0" y="46" font-family="Nunito Sans, Arial, sans-serif" font-weight="900" font-size="48" fill="currentColor" letter-spacing="2">IEL</text>
+    <circle cx="128" cy="29" r="22" fill="none" stroke="currentColor" stroke-width="3.2"/>
+    <rect x="126.4" y="7" width="3.2" height="44" fill="currentColor"/>
+    <rect x="117" y="19" width="22" height="3.2" fill="currentColor"/>
+    <text x="1" y="88" font-family="Nunito Sans, Arial, sans-serif" font-weight="400" font-size="27" fill="currentColor" letter-spacing=".5">BOA VISTA</text>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap topo-h">
+    <span class="etq">recados internos</span>
+    <svg class="logo" viewBox="0 0 160 100" role="img" aria-label="IEL Boa Vista"><use href="#logo"/></svg>
+  </div>
+  <div class="wrap titulo">
+    <h1>Mural <span>IELBV</span></h1>
+    <div class="fita">o que está acontecendo na igreja</div>
+  </div>
+  <svg class="skyline" viewBox="0 0 1600 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <g fill="url(#ret)" opacity=".5"><rect x="0" y="70" width="60" height="70"/><rect x="70" y="40" width="70" height="100"/><rect x="150" y="80" width="50" height="60"/><rect x="210" y="55" width="60" height="85"/><rect x="290" y="90" width="80" height="50"/><rect x="380" y="35" width="55" height="105"/><rect x="445" y="70" width="70" height="70"/><rect x="525" y="95" width="60" height="45"/><rect x="1010" y="60" width="60" height="80"/><rect x="1080" y="30" width="70" height="110"/><rect x="1160" y="85" width="55" height="55"/><rect x="1225" y="50" width="75" height="90"/><rect x="1310" y="75" width="60" height="65"/><rect x="1380" y="40" width="65" height="100"/><rect x="1455" y="80" width="70" height="60"/><rect x="1535" y="55" width="65" height="85"/></g>
+    <g fill="#2F3819" stroke="#F1ECDE" stroke-width="2">
+      <path d="M680 140 V104 A30 30 0 0 1 740 104 V140Z"/>
+      <path d="M860 140 V104 A30 30 0 0 1 920 104 V140Z"/>
+      <path d="M730 140 V88 A70 70 0 0 1 870 88 V140Z"/>
+      <rect x="793" y="6" width="14" height="18"/>
+      <path d="M786 26 L800 8 L814 26Z"/>
+    </g>
+    <g stroke="#F1ECDE" stroke-width="1.3" opacity=".7" fill="none">
+      <path d="M754 88 A46 70 0 0 1 800 20 A46 70 0 0 1 846 88"/><path d="M800 20 V140"/>
+      <path d="M730 112 H870"/><path d="M680 120 H740 M860 120 H920"/>
+    </g>
+    <g fill="#96A068"><use href="#arau" x="505.0" y="10" width="110" height="150"/><use href="#arau" x="902.5" y="30" width="95" height="130"/><use href="#arau" x="287.5" y="40" width="85" height="120"/><use href="#arau" x="1197.5" y="15" width="105" height="140"/><use href="#arau" x="72.5" y="50" width="75" height="110"/><use href="#arau" x="1440.0" y="45" width="80" height="115"/></g>
+    <rect x="0" y="136" width="1600" height="4" fill="#2F3819"/>
+  </svg>
+</header>
+<div class="paver" aria-hidden="true"></div>
+<main class="wrap">
+  <div class="intro">
+    <p>Recados da liderança e da secretaria para a família IELBV. Os recados saem do mural sozinhos quando passam da data.</p>
+    <span class="note" id="aviso" hidden></span>
+  </div>
+  <div class="tools">
+    <input id="busca" type="search" placeholder="Buscar: ensaio, jovens, ceia…" aria-label="Buscar recado">
+    <div class="chips" id="chips" role="group" aria-label="Ministérios"></div>
+  </div>
+  <div id="lista"><p class="vazio">carregando os recados…</p></div>
+</main>
+<footer class="wrap">
+  <div class="aviso-legal">
+    <p><b>Quem publica:</b> os recados são enviados pela liderança e pela secretaria e revisados antes de aparecer aqui. Na dúvida, confirme com o responsável do ministério.</p>
+    <p><b>Correções:</b> viu algo errado ou desatualizado? Fale com <span class="contato-guia" id="contato">juliacarvalho.software@gmail.com</span>.</p>
+  </div>
+  <p>Igreja Evangélica Livre do Boa Vista · Curitiba, Paraná · Mural de recados</p>
+  <svg class="logo" viewBox="0 0 160 100" role="img" aria-label="IEL Boa Vista"><use href="#logo"/></svg>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Arte do recado">
+  <img id="lb-img" alt="">
+  <button class="fechar" id="lb-fechar" type="button">fechar</button>
+</div>
+
+<script>
+/* ===== CONFIGURAÇÃO: cole aqui os seus links ===== */
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHS2gHVf9SjFVyycktMh12oICTxfJSD-hV8s69Ir5Xm1OR4qptVMl1k_pq8zopqVR6vTgzCNdb9e78/pub?gid=683246666&single=true&output=csv";   // link CSV da aba "Mural" (Arquivo > Compartilhar > Publicar na Web)
+const CONTATO = "juliacarvalho.software@gmail.com";   // contato para correções (aparece no rodapé)
+/* ================================================== */
+
+const CAMPOS=["titulo","area","recado","data","horario","local","link","ate","urgente","imagem"];
+const MESES=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const SEMANA=["dom","seg","ter","qua","qui","sex","sáb"];
+const SEMANA_LONGA=["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
+
+function hoje(){const d=new Date();d.setHours(0,0,0,0);return d}
+function emDias(n){const d=hoje();d.setDate(d.getDate()+n);return d}
+function iso(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function br(d){return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`}
+function lerData(s){s=String(s||"").trim();if(!s)return null;let m;
+  if(m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/))return new Date(+m[1],m[2]-1,+m[3]);
+  if(m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/)){let y=+m[3];if(y<100)y+=2000;return new Date(y,m[2]-1,+m[1])}
+  return null}
+function proximo(diaSemana){const d=hoje();d.setDate(d.getDate()+((diaSemana-d.getDay()+7)%7||7));return d}
+
+const EXEMPLOS=[CAMPOS,
+ ["Bazar da igreja","Ação social","Roupas e utilidades a preço simbólico. Aceitamos doações até a quinta anterior: deixe na secretaria.","04/12/2026","10:00","Salão da igreja","","2026-12-04","Não","exemplos/bazar.jpg"],
+ ["Reunião de líderes mudou de dia","Liderança","A reunião mensal passa para quarta-feira. Tragam a agenda do seu ministério para o próximo mês.",br(proximo(3)),"20:00","Sala 2","",iso(proximo(3)),"Sim",""],
+ ["Ensaio do louvor","Louvor","Ensaio com todos os músicos e vocais para o culto de domingo.",br(proximo(6)),"15:00","Templo","",iso(proximo(6)),"Não",""],
+ ["Escola Bíblica Dominical","Geral","Todo domingo, antes do culto. Traga sua Bíblia e venha estudar a Palavra com a gente.","","09:00","Templo","",iso(emDias(60)),"Não","exemplos/ebd.jpg"],
+ ["Semana de oração","Geral","Sempre na semana após a Ceia, no primeiro domingo do mês. De segunda a sexta, das 19h30 às 20h30.","","","Templo","",iso(emDias(30)),"Não","exemplos/oracao.jpg"],
+ ["Campanha do quilo","Ação social","Traga 1 kg de alimento não perecível. As doações vão para as famílias atendidas pela igreja no Boa Vista.","","","Caixa na entrada do templo","",iso(emDias(25)),"Não",""],
+];
+
+function parseCSV(t){const rows=[];let row=[],f="",q=false;
+  for(let i=0;i<t.length;i++){const c=t[i];
+    if(q){ if(c=='"'){ if(t[i+1]=='"'){f+='"';i++} else q=false } else f+=c }
+    else if(c=='"') q=true; else if(c==','){row.push(f);f=""}
+    else if(c=='\n'||c=='\r'){ if(c=='\r'&&t[i+1]=='\n')i++; row.push(f);rows.push(row);row=[];f="" }
+    else f+=c }
+  if(f||row.length){row.push(f);rows.push(row)} return rows }
+const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=s=>String(s||"").normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+const lista=document.getElementById('lista'),chips=document.getElementById('chips'),busca=document.getElementById('busca'),aviso=document.getElementById('aviso');
+let RECADOS=[],atual="todos";
+
+function montar(tabela,exemplo){
+  const cab=(tabela[0]||[]).map(norm);
+  const idx=CAMPOS.map((c,i)=>{const j=cab.indexOf(c);return j>=0?j:i});
+  const H=hoje();
+  RECADOS=tabela.slice(1).map(r=>{const v=k=>String(r[idx[CAMPOS.indexOf(k)]]||"").trim();
+    const data=lerData(v('data')),ate=lerData(v('ate'))||data;
+    return {imagem:v('imagem'),titulo:v('titulo'),area:v('area')||"Geral",recado:v('recado'),data,horario:v('horario').replace(/^(\d{1,2}:\d{2}).*$/,'$1'),local:v('local'),link:v('link'),ate,urg:/^s/i.test(v('urgente')),exemplo}})
+   .filter(r=>r.titulo&&(!r.ate||r.ate>=H));
+  chips.innerHTML="";
+  ["todos",...[...new Set(RECADOS.map(r=>r.area.toLowerCase()))].sort((a,b)=>a.localeCompare(b,'pt'))].forEach(c=>{
+    const b=document.createElement('button');b.className='chip';b.textContent=c;b.setAttribute('aria-pressed',c===atual);
+    b.onclick=()=>{atual=c;[...chips.children].forEach(x=>x.setAttribute('aria-pressed',x.textContent===c));render()};chips.appendChild(b)});
+  render();
+}
+function urlImagem(u){u=String(u||"").split(/[\s,]+/)[0];if(!u)return null;
+  const m=u.match(/[?&]id=([\w-]{20,})/)||u.match(/\/d\/([\w-]{20,})/);
+  if(m)return{src:`https://drive.google.com/thumbnail?id=${m[1]}&sz=w1200`,alt:`https://lh3.googleusercontent.com/d/${m[1]}=w1200`};
+  if(/^https?:\/\//i.test(u)||/^[\w./-]+\.(jpe?g|png|webp|gif)$/i.test(u))return{src:u,alt:""};return null}
+function quando(r){if(!r.data)return r.horario?`às ${r.horario.replace(':00','h').replace(':','h')}`:"";const diff=Math.round((r.data-hoje())/864e5);
+  const rot=diff===0?"hoje":diff===1?"amanhã":SEMANA_LONGA[r.data.getDay()];
+  return `${rot}, ${String(r.data.getDate()).padStart(2,'0')}/${String(r.data.getMonth()+1).padStart(2,'0')}${r.horario?` às ${r.horario.replace(':00','h').replace(':','h')}`:""}`}
+function cartao(r){
+  const diff=r.data?Math.round((r.data-hoje())/864e5):null;
+  const cal=r.data?`<div class="cal${diff===0?' hoje':''}" aria-hidden="true"><span class="m">${diff===0?'hoje':MESES[r.data.getMonth()]}</span><span class="d">${r.data.getDate()}</span><span class="s">${SEMANA[r.data.getDay()]}</span></div>`:"";
+  const q=quando(r);
+  const texto=[`*${r.titulo}*`,q,r.local,"",r.recado,"",`Mural IELBV: ${location.href.split('#')[0]}`].filter((x,i,a)=>x!==""||(a[i-1]!==""&&i>0)).join("\n");
+  let link="";if(/^https?:\/\//i.test(r.link))link=`<a href="${esc(r.link)}" target="_blank" rel="noopener">abrir link →</a>`;
+  const im=urlImagem(r.imagem);
+  const foto=im?`<button class="foto" type="button" data-src="${esc(im.src)}" aria-label="ver a arte de ${esc(r.titulo)} maior"><img src="${esc(im.src)}" ${im.alt?`onerror="if(!this.dataset.f){this.dataset.f=1;this.src='${esc(im.alt)}'}"`:''} alt="Arte do recado: ${esc(r.titulo)}" loading="lazy"></button>`:"";
+  return `<article class="rec${r.urg?' urg':''}${im?' com-foto':''}">${foto}
+   <div class="rec-top">${cal}<div class="rec-cab"><div class="tags"><span class="tag">${esc(r.area.toLowerCase())}</span>${r.urg?'<span class="tag imp">importante</span>':''}${r.exemplo?'<span class="tag ex">exemplo</span>':''}</div><h3>${esc(r.titulo)}</h3></div></div>
+   ${r.recado?`<p>${esc(r.recado)}</p>`:""}
+   ${q||r.local?`<div class="meta">${q?`<span>${esc(q)}</span>`:""}${r.local?`<span>${esc(r.local)}</span>`:""}</div>`:""}
+   <div class="acoes">${link}<a class="zap" href="https://wa.me/?text=${encodeURIComponent(texto)}" target="_blank" rel="noopener">enviar no WhatsApp</a></div>
+  </article>`}
+function render(){
+  const q=norm(busca.value);
+  const vis=RECADOS.filter(r=>(atual==="todos"||r.area.toLowerCase()===atual)&&(!q||norm(r.titulo+' '+r.recado+' '+r.area+' '+r.local).includes(q)));
+  if(!vis.length){lista.innerHTML='<p class="vazio">nenhum recado por aqui. tente outra palavra ou ministério.</p>';return}
+  const H=hoje(),G={semana:[],proximos:[],avisos:[]};
+  vis.forEach(r=>{if(!r.data)G.avisos.push(r);else if((r.data-H)/864e5<=6)G.semana.push(r);else G.proximos.push(r)});
+  const ord=(a,b)=>(b.urg-a.urg)||((a.data||a.ate||0)-(b.data||b.ate||0));
+  const sec=(t,arr,sub)=>arr.length?`<section class="grupo"><h2>${t}<small>${sub}</small></h2><div class="recados">${arr.sort(ord).map(cartao).join("")}</div></section>`:"";
+  lista.innerHTML=sec("Esta semana",G.semana,"próximos 7 dias")+sec("Avisos",G.avisos,"sem data marcada")+sec("Mais pra frente",G.proximos,"depois desta semana");
+}
+busca.addEventListener('input',render);
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img');let lbOrigem=null;
+lista.addEventListener('click',e=>{const b=e.target.closest('.foto');if(!b)return;lbOrigem=b;const i=b.querySelector('img');lbImg.src=i.currentSrc||i.src;lbImg.alt=i.alt;lb.hidden=false;document.getElementById('lb-fechar').focus()});
+function fecharLb(){lb.hidden=true;lbImg.src="";lbOrigem&&lbOrigem.focus()}
+document.getElementById('lb-fechar').onclick=fecharLb;lb.addEventListener('click',e=>{if(e.target===lb)fecharLb()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!lb.hidden)fecharLb()});
+if(CONTATO)document.getElementById('contato').textContent=CONTATO;
+if(!CSV_URL){aviso.textContent="modelo · recados de exemplo";aviso.hidden=false;montar(EXEMPLOS,true)}
+else fetch(CSV_URL+(CSV_URL.includes('?')?'&':'?')+'t='+Date.now())
+  .then(r=>{if(!r.ok)throw 0;return r.text()})
+  .then(t=>{const rows=parseCSV(t);if(rows.length<2||!rows.slice(1).some(r=>r[0]&&r[0].trim())){lista.innerHTML='<p class="vazio">nenhum recado no momento.</p>';return}montar(rows,false)})
+  .catch(()=>{lista.innerHTML='<p class="vazio">não foi possível carregar os recados agora. tente de novo em alguns minutos.</p>'});
+</script>
+</body>
+</html>
